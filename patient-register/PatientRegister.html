@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="PatientRegister.css"> <!-- Link to a common CSS file -->
+</head>
+<body>
+
+    <!-- Sidebar Navigation (Same Across All Pages) -->
+    <nav class="sidebar">
+        <h1 class="sidebar-title">
+            AVT<span class="highlight">ech</span>
+        </h1>
+        <ul>
+            <li><a href="HomePage.html">🎛️ Dashboard</a></li>
+            <li><a href="PatientRegister.html">📝 Patient Registration</a></li>
+            <li><a href="PatientAdmission.html">🏥 Patient Admission</a></li>
+            <li><a href="ScheduleAppointment.html">📅 Schedule Appointment</a></li>
+            <li><a href="Billing.html">💲 Insurance Form/Claims</a></li>
+            <li><a href="MedicalReport.html">📂 Medical Report</a></li>
+        </ul>
+        <button id="logoutBtn">🚪 Logout</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>📝 Patient Registration</h1>
+        <!-- Registered Patients Table -->
+        <div class="registered-container">
+            <h2>Registered Patients List</h2>
+            <button id="addNewPatientBtn" class="btn add-patient">Add New Patient</button>
+            <table id="patientsTable">
+                <thead>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Identification</th> 
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Height (cm)</th>
+                        <th>Weight (kg)</th>
+                        <th>Address</th>
+                        <th>Post Code</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Actions</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Registered patients will be added here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Register New Patient Modal -->
+        <div id="registerPatientModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span id="closeRegisterPatientModal" class="close">&times;</span>
+                <h2>Register New Patient</h2>
+                <form id="registerForm">
+                    <!-- Name and Age in the same row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" required>
+                        </div>
+                    </div>
+
+                    <!-- Identification -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="identification">Identification</label>
+                            <input type="text" id="identification" name="identification" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+
+                    <!-- Date of Birth and Gender in the same row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Height (cm)</label>
+                            <input type="number" id="height" name="height" required>
+                        </div>
+                    </div>
+
+                    <!-- Height and Weight in the same row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" name="weight" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postcode">Post Code</label>
+                            <input type="text" id="postcode" name="postcode" required>
+                        </div>
+                    </div>
+
+                    <!-- Address and Post Code in the same row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                    </div>
+
+                    <!-- Phone Number and Email in the same row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group full-width">
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>        
+
+    <script src="PatientRegister.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
