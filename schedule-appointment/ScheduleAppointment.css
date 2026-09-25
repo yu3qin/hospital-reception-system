@@ -1,0 +1,379 @@
+/* General Styles - Applies to the entire page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Navigation - Styles the left navigation panel */
+.sidebar {
+    width: 18%;
+    background: #579ae1;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 2px solid rgba(0, 0, 0, 0.072);
+}
+
+/* Sidebar Title - Styles the main heading inside the sidebar */
+.sidebar-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+/* Sidebar Title Highlight - Applies color to a specific word in the title */
+.sidebar-title .highlight {
+    color: hsl(51, 100%, 50%);
+}
+
+.sidebar h1 {
+    color: white;
+}
+
+/* Sidebar Navigation List - Removes bullet points */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Sidebar List Items - Adds spacing between each menu item */
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+/* Sidebar Links - Styles the appearance of the navigation links */
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Sidebar Link Hover Effect - Changes background on hover */
+.sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Logout Button - Styles the logout button inside the sidebar */
+#logoutBtn {
+    width: 130px;
+    height: 50px;
+    background-color: #f74254;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+/* Logout Button Hover Effect - Changes color when hovered */
+#logoutBtn:hover {
+    background-color: #b52b39;
+}
+
+/* Main Content - Now Truly Centered */
+.main-content {
+    flex-grow: 1;      /* Fill up available space */
+    width: 100%;       /* Width */
+    padding: 20px;  
+    padding-left: 23%;
+}
+
+/* Main Content - Hello, Admin */
+.main-content h1 {
+    flex-grow: 1;      /* Fill up available space */
+    width: 100%;       /* Width */
+    font-size: 32px;
+    font-style: bold;
+    border-bottom: 1px solid #e0e0e0; /* Add a border below heading */
+    text-align: left;  /* Ensure content starts on the left */
+}
+
+
+/* Main Content - Welcome to AVTech Hospital Reception System. Use the sidebar to navigate through the system */
+.section-title {
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;
+    text-align: center;
+    margin-top: -25px;
+    margin-left: 350px;
+}
+
+
+/* 📅 Calendar Container */
+.schedule-container {
+    width: 80%;
+    height: 80vh; /* Adjust height to fit within the page */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.schedule-container h2 {
+    position-anchor: center;
+}
+
+/* 📆 Week Navigation (Previous/Next Week Buttons) */
+.week-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 10px;
+}
+
+.week-nav button {
+    padding: 10px 15px;
+    border: none;
+    background: #579ae1;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.week-nav button:hover {
+    background: #407bcf;
+}
+
+/* 📌 Scrollable Calendar Grid */
+.calendar {
+    display: grid;
+    grid-template-columns: 100px repeat(7, 1fr);
+    width: 120%;
+    max-width: 1200px;
+    height: 60vh;
+    overflow-y: auto; /* Enable scrolling */
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-left: 50px;
+    position: relative; /* Important for sticky header */
+}
+
+/* 📅 Day Header */
+.day {
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    background: #579ae1;
+    color: white;
+    border: 1px solid #ddd;
+}
+
+
+/* 📅 Day Header */
+.day-header {
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    background: #579ae1;
+    color: white;
+    border: 1px solid #ddd;
+    position: sticky; /* Make the day header sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1; /* Ensure it stays above other content */
+}
+
+/* Style for Individual Day Headers */
+.day-header {
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Fixed Header for Days */
+.day-header-container {
+    display: grid;
+    grid-template-columns: 100px repeat(7, 1fr); /* Time column + 7 days */
+    width: 120%;
+    max-width: 1200px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #579ae1; /* Ensure it has a background */
+    color: white;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+
+/* ⏰ Time Labels */
+.time-slot {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    min-height: 50px;
+}
+
+/* Allow each column (day slots) to be scrollable */
+.time-slot-container {
+    height: 60vh;
+    overflow-y: auto; /* Allow scrolling */
+    display: flex;
+    flex-direction: column;
+}
+
+.time-column {
+    background: #f0f0f0;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 📌 Appointment Slots */
+.slot {
+    min-height: 50px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Hover Effect */
+.slot:hover {
+    background: rgba(87, 154, 225, 0.3);
+}
+
+/* Booked Slot */
+.slot.booked {
+    background: #f74254;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Modal Background */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Modal Box */
+.modal-content {
+    background: #f8f9fa; /* Light grey background */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-left: 550px;
+    margin-top: 250px;
+}
+
+/* Close Button (Cross) */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Confirm Button (Green) */
+.confirm-button {
+    background-color: #28a745; /* Green */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Confirm Button Hover Effect */
+.confirm-button:hover {
+    background-color: #218838;
+}
+
+/* Cancel Button */
+.cancel-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Cancel Button Hover Effect */
+.cancel-button:hover {
+    background-color: #c82333;
+}
+
+/* Update Button */
+.update-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+/* Update Button Hover Effect */
+.update-button:hover {
+    background-color: #0056b3;
+}
+
+/* Remove Button */
+.remove-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Remove Button Hover Effect */
+.remove-button:hover {
+    background-color: #c82333;
+}
+
+/* Dropdown Styling */
+#patientSelect, #editPatientSelect {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

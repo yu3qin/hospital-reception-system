@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Appointment</title>
+    <link rel="stylesheet" href="ScheduleAppointment.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <h1 class="sidebar-title">
+            AVT<span class="highlight">ech</span>
+        </h1>
+        <ul>
+            <li><a href="HomePage.html">🎛️ Dashboard</a></li>
+            <li><a href="PatientRegister.html">📝 Patient Registration</a></li>
+            <li><a href="PatientAdmission.html">🏥 Patient Admission</a></li>
+            <li><a href="ScheduleAppointment.html">📅 Schedule Appointment</a></li>
+            <li><a href="Billing.html">💲 Insurance Form/Claims</a></li>
+            <li><a href="MedicalReport.html">📂 Medical Report</a></li>
+        </ul>
+        <button id="logoutBtn">🚪 Logout</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <h1>📅 Schedule Appointment </h1>
+        <!-- Appointment Scheduling Section -->
+        <div class="schedule-container">
+            <div class="week-nav">
+                <button id="prevWeek">⬅ Previous Week</button>
+                <h2 id="weekDisplay">March 4 - March 10</h2>
+                <button id="nextWeek">Next Week ➡</button>
+            </div>
+
+            <div class="calendar">
+                <!-- Time column -->
+                <div class="day">Time</div>
+                <div class="day">Monday</div>
+                <div class="day">Tuesday</div>
+                <div class="day">Wednesday</div>
+                <div class="day">Thursday</div>
+                <div class="day">Friday</div>
+                <div class="day">Saturday</div>
+                <div class="day">Sunday</div>
+
+                <!-- Time slots in 24-hour format -->
+                <script>
+                    for (let hour = 8; hour <= 14; hour++) { // From 0800 to 1400
+                        for (let min = 0; min < 60; min += 30) {
+                            let hourStr = hour < 10 ? "0" + hour : hour; // Ensures 2-digit hours (08, 09, 10...)
+                            let minStr = min === 0 ? "00" : "30"; // Ensures 2-digit minutes (00, 30)
+                            let time = `${hourStr}${minStr}`; // 24-hour format (e.g., "0800", "0830", "0900")
+
+                            document.write(`<div class="time-slot">${time}</div>`); // Time Column
+                            
+                            for (let day = 1; day <= 7; day++) { // Days: Mon-Sun
+                                document.write(`<div class="slot" data-time="${time}" data-day="${day}"></div>`);
+                            }
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Schedule Appointment</h3>
+            <p>Selected Time: <strong id="selectedTime"></strong></p>
+            <p>Day: <strong id="selectedDay"></strong> (<strong id="selectedDate"></strong>)</p>
+            <label>Select Patient:</label>
+            <select id="patientSelect">
+                <option value="">-- Select Patient --</option>
+                <!-- Options will be populated dynamically -->
+            </select>
+            <button id="confirmBooking" class="confirm-button">Confirm</button>
+            <button id="closeBookingModal" class="cancel-button">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Editing Modal -->
+    <div id="editingModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="closeEditingModal" class="close">&times;</span>
+            <h3>Edit Appointment</h3>
+            <p>Selected Time: <strong id="editSelectedTime"></strong></p>
+            <p>Day: <strong id="editSelectedDay"></strong> (<strong id="editSelectedDate"></strong>)</p>
+            <label>Select Patient:</label>
+            <select id="editPatientSelect">
+                <option value="">-- Select Patient --</option>
+                <!-- Options will be populated dynamically -->
+            </select>
+            <button id="updateBooking" class="update-button">Update</button>
+            <button id="removeBooking" class="remove-button">Remove</button>
+        </div>
+    </div>
+
+    <script src="ScheduleAppointment.js"></script>
+</body>
+</html>
