@@ -49,3 +49,5 @@ This feature lets staff create and track patient medical records. It stores pati
 * **A:** Billing & Medical Reports
 * **V:** Patient Registration & Intake
 * **T:** Patient Admissions & Appointment Scheduling
+
+These were our main focus areas, but we all worked across both the frontend and backend to keep the design consistent and the system running smoothly.
