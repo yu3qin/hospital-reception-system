@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Reception System</title>
+    <link rel="stylesheet" href="HomePage.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation (Same for All Pages) -->
+    <nav class="sidebar">
+        <h1 class="sidebar-title">
+            AVT<span class="highlight">ech</span>
+        </h1>
+        <ul>
+            <li><a href="HomePage.html">🎛️ Dashboard</a></li>
+            <li><a href="PatientRegister.html">📝 Patient Registration</a></li>
+            <li><a href="PatientAdmission.html">🏥 Patient Admission</a></li>
+            <li><a href="ScheduleAppointment.html">📅 Schedule Appointment</a></li>
+            <li><a href="Billing.html">💲 Insurance Form/Claims</a></li>
+            <li><a href="MedicalReport.html">📂 Medical Report</a></li>
+        </ul>
+        <button id="logoutBtn">🚪 Logout</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <h1>Hello, Admin 👋</h1>
+        <div class="section-title">
+            <p>Welcome to AVTech Hospital Reception System. Use the sidebar to navigate through the system.</p>
+        </div>
+        
+        <!-- Statistics Section -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>Total Patients Registered</h3>
+                <p id="totalPatients">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Admission Patients</h3>
+                <p id="inOutPatients">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Total Appointments</h3>
+                <p id="totalAppointments">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Insurance Claims</h3>
+                <p id="totalClaims">0</p>
+            </div>
+        </div>
+
+        <!-- Search Registered Patient Section -->
+        <div class="search-container">
+            <div class="search-section">
+                <h2>Search Registered Patient</h2>
+                <form id="searchForm" class="search-form">
+                    <div class="search-fields">
+                        <div class="form-group">
+                            <label for="searchId">ID</label>
+                            <input type="text" id="searchId" name="searchId">
+                        </div>
+                        <p class="or-text">OR</p>
+                        <div class="form-group">
+                            <label for="searchName">Name</label>
+                            <input type="text" id="searchName" name="searchName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+
+        <!-- Hidden Popup Modal -->
+        <div id="patientModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Patient Details</h2>
+                <div id="popup-details"></div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script src="HomePage.js"></script>
+</body>
+</html>
