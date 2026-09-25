@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Specifies the language of the document as English -->
+<head>
+    <meta charset="utf-8"> <!--Character encoding-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Page is responsive and can be used for different screen sizes-->
+    <title>Medical Report</title> <!-- Specifies the title of the page, displayed in the browser tab -->
+    <link rel="stylesheet" href="MedicalReport.css">  <!-- Linking external CSS -->
+</head>
+<body>
+    <!-- Sidebar Navigation (Same for All Pages) -->
+    <nav class="sidebar">
+        <h1 class="sidebar-title">
+            AVT<span class="highlight">ech</span>
+        </h1>
+        <ul> <!-- Unordered list of navigation links in sidebar -->
+            <li><a href="HomePage.html">🎛️ Dashboard</a></li>
+            <li><a href="PatientRegister.html">📝 Patient Registration</a></li>
+            <li><a href="PatientAdmission.html">🏥 Patient Admission</a></li>
+            <li><a href="ScheduleAppointment.html">📅 Schedule Appointment</a></li>
+            <li><a href="Billing.html">💲 Insurance Form/Claims</a></li>
+            <li><a href="MedicalReport.html">📂 Medical Report</a></li>
+        </ul>
+        <!-- Log out button -->
+        <button id="logoutBtn">🚪 Logout</button>
+    </nav>
+
+    <!-- Main content section in the page -->
+    <main class="main-content">
+        <h1>📂 Medical Report</h1>
+        <div> <!-- Header of the page -->
+            <h2>Medical Report Overview </h2> <!-- The page name -->
+        </div>
+        
+        <!-- Card to display total number of report -->
+        <div class="cards">
+            <div class="card">
+                <h4>TOTAL REPORTS</h4> 
+                <p id="reportCounts">0</p>
+            </div>
+        </div>
+        
+        <!-- A header is listed as item-->
+        <div class="item">
+            <h3>Medical Reports</h3>
+        </div>
+            
+        <!-- The search bar and the add report button are in a the "barNbutton" container -->
+        <div class="barNbutton">   <!-- Allow searching and add report using search bar and add button -->                                     
+            <input type="text" placeholder="Search report based on report id or patient id or patient name" class="search-bar">
+            <button class="btn addreport" onclick="openModal()">+ Add Report</button>
+        </div>
+        
+        <!-- Table displays information and data -->
+        <table>
+            <thead>
+                <tr> 
+                    <!-- Table header -->
+                    <th>Report ID</th>
+                    <th>Patient Name & ID</th>
+                    <th style="width: 10%;">NRIC/Passport</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Blood Type</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table body will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+
+    <!-- Modal show the medical report form -->
+    <div id="addReportModal" class="modal">  
+        <div class="popup-add">
+            <h3>Medical Report Form</h3>   <!-- The header of the form -->
+            <form id="reportForm" onSubmit="return formValidation();"> <!-- Calls the JavaScript function for form validation before submission -->
+                <div class="inputReportID"> <!-- Report ID Section -->
+                    <label for="reportID">Report ID<span class="required">*</span></label> <!-- Label for the input field -->
+                    <input type="text" id="reportID" name="reportID" required placeholder="Enter Report ID"> <!-- Get user input for report id -->
+                </div>
+                    
+                <!-- Patient Information Section -->
+                <div class="section-title">
+                    <!-- Header of the section-->
+                    <h4>Patient Information</h4> 
+                </div>
+                
+                <!-- Input fields -->
+                <div class="input-container">
+                    <div class="input-left"> <!-- These inputs are being group up and placed in left side of the modal -->
+                        <div class="input">
+                            <label for="patientSelect">Name of Patient <span class="required">*</span></label> <!-- Span has a asterisk to show user the input field is required -->
+                            <select id="patientSelect" name="patientSelect" required></select> <!-- Dropdown for selecting patient name -->
+                        </div>
+
+                        <div class="input">
+                            <!-- Get patient's dob -->
+                            <label for="dob">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+
+                        <div class="input">  
+                            <!-- Get patient height-->
+                            <label for="height">Height (CM) <span class="required">*</span></label>
+                            <input type="text" id="height" name="height" required placeholder="Enter height here">
+                        </div>
+
+                        <!-- Gender section -->
+                        <div class="gender-option">
+                            <label for="gender">Gender <span class="required">*</span></label>
+                            <!-- Container groups the labels and radio inputs together -->
+                            <div class="radio-buttons">
+                                <label for="male">
+                                    <input type="radio" value="Male" name="gender" id="male" required><span>Male</span>
+                                </label>
+                                <!-- 'for' attribute for each label links to the id-->
+                                <label for="female">
+                                    <input type="radio" value="Female" name="gender" id="female" required><span>Female</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Inputs that are at right side of the modal -->
+                    <div class="input-right">
+                        <div class="input">
+                            <!-- Get patient national id / passport -->
+                            <label for="identification">NRIC/Passport <span class="required">*</span></label>
+                            <input type="text" id="identification" name="identification" required placeholder="Enter nric/ passport id ">
+                        </div>
+                        
+                        <div class="input-left">
+                            <div class="input">
+                                <!-- Get physician's name -->
+                                <label for="nameOfPhysician">Name of Physician <span class="required">*</span></label>
+                                <input type="text" id="nameOfPhysician" name="nameOfPhysician" required placeholder="Enter physician's name (letters only)">
+                            </div>
+                        </div>
+
+                        <div class="input">
+                            <!-- Get patient's weight -->
+                            <label for="weight">Weight (KG)<span class="required">*</span></label>
+                            <input type="text" id="weight" name="weight" required placeholder="Enter weight here ">
+                        </div>
+                        
+                        <div class="blood-option">
+                            <!-- Get patient's blood type -->
+                            <label for="blood">Blood Type <span class="required">*</span></label>
+                            <div class="radio-buttons">
+                                <!-- Group two blood types in left side of the modal -->
+                                <div class="left">
+                                    <!-- Group label and input together -->
+                                    <label for="typeA">
+                                        <input type="radio" value="Type A" name="blood" id="typeA" required><span>Type A</span>
+                                    </label>
+                                    <label for="typeAB">
+                                        <input type="radio" value="Type AB" name="blood" id="typeAB" required><span>Type AB</span>
+                                    </label>
+                                </div>
+                                <!-- Group two blood types in right side of the modal -->
+                                <div class="right">
+                                    <label for="typeB">
+                                        <input type="radio" value="Type B" name="blood" id="typeB" required><span>Type B</span>
+                                    </label>
+                                    <label for="typeO">
+                                        <input type="radio" value="Type O" name="blood" id="typeO" required><span>Type O</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- Medical Information -->
+                <div class="section-title">
+                    <h4>Medical Information</h4>
+                </div>
+
+                <div class="input">
+                    <!-- Get assessment details -->
+                    <label for="medicalInformation1">Assessment <span class="required">*</label>
+                    <textarea id="medicalInformation1" rows="3" required placeholder="Please provide the details of assessment here"></textarea> <!-- The textarea is 3 lines tall -->
+                </div>
+
+                <div class="input">
+                    <!-- Get disease details -->
+                    <label for="medicalInformation2">Previous Illness/Conditions/Allergy history <span class="required">*</label>
+                    <textarea id="medicalInformation2" rows="3" required placeholder="Please provide the details here"></textarea> <!-- The textarea is 3 lines tall -->
+                </div>
+
+                <div class="input">
+                    <!-- Get medication or treatment details -->
+                    <label for="medicalInformation3">Medication/ Treatment <span class="required">*</label>
+                    <textarea id="medicalInformation3" rows="3" required placeholder="Please provide the details here"></textarea> <!-- The textarea is 3 lines tall -->
+                </div>
+
+                <div class="input">
+                    <!-- Get doctor's prescription -->
+                    <label for="medicalInformation4">Prescription <span class="required">*</label>
+                    <textarea id="medicalInformation4" rows="4" required placeholder="Please provide the doctor's prescription here"></textarea> <!-- The textarea is 4 lines tall -->
+                </div>
+
+                <!-- Notices reminding the user to review and confirm information before submission -->
+                <p class="notice">*Be aware that patient information section is not editable after submission*</p>
+                <p class="notice">*Please ensure all the information above is accurate before submitting this form*</p>
+
+                <!-- Buttons in a container -->
+                <div class="button">
+                    <button type="submit">Submit</button>
+                    <button type="button" class="close-btn" onclick="closeModal()">X</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View function's pop up modal -->
+    <div id="viewReportModal" class="modal">
+        <div class="view-content">
+            <h3>Medical Report</h3>
+            <div class="button">
+                <button id="editReportButton">Edit</button>
+                <button id="saveReportButton">Save</button>
+                <button type="button" class="close-btn" onclick="closeViewModal()">X</button>
+            </div>
+            <div>  <!-- Strong function made the font weight bold, but the values remain normal font weight -->
+                <p class="pinfo"><strong>Report ID:</strong> <span id="viewReportID"></span></p>
+                <p class="pinfo"><strong>Patient Name & ID:</strong> <span id="viewPatientName"></span></p>
+                <p class="pinfo"><strong>NRIC/Passport:</strong> <span id="viewIdentification"></span></p>
+                <p class="pinfo"><strong>Date of Birth:</strong> <span id="viewDOB"></span></p>
+                <p class="pinfo"><strong>Gender:</strong> <span id="viewGender"></span></p>
+                <p class="pinfo"><strong>Blood Type:</strong> <span id="viewBlood"></span></p>
+                <p class="pinfo"><strong>Height:</strong> <span id="viewHeight"></span></p>
+                <p class="pinfo"><strong>Weight:</strong> <span id="viewWeight"></span></p>
+
+                <!-- Medical information in pop up modal -->
+                <h4>Medical Information</h4>
+                <p class="text">Assessment:</p>
+                <p class="input"><span id="viewMedicalInformation1"></span></p>
+
+                <p class="text">Previous Illness/Conditions/Allergy:</p>
+                <p class="input"><span id="viewMedicalInformation2"></span></p>
+
+                <p class="text">Medication/Treatment:</p>
+                <p class="input"><span id="viewMedicalInformation3"></span></p>
+
+                <p class="text">Prescription:</p>
+                <p class="input"><span id="viewMedicalInformation4"></span></p>
+
+                <!-- Close view modal button -->
+                <div class="button">
+                    <button type="button" class="close-btn" onclick="closeViewModal()">X</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="MedicalReport.js"></script> <!-- HTML is link to external Javascript file -->
+</body>
+</html>
