@@ -45,3 +45,7 @@ The billing section is designed to record insurance claims, where staff can add 
 ### 7. Medical Report Management
 This feature lets staff create and track patient medical records. It stores patient information such as blood type, weight, height, assessments, illnesses, treatments, prescriptions and physician details. This is important for maintaining accurate medical histories and supporting treatment decisions.
 
+## Team & Credits
+* **A:** Billing & Medical Reports
+* **V:** Patient Registration & Intake
+* **T:** Patient Admissions & Appointment Scheduling
