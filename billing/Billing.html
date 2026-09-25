@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Specifies the language of the document as English -->
+    <head>
+        <meta charset="utf-8"> <!--Character encoding-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Page is responsive and can be used for different screen sizes-->
+        <title>File Insurance</title> <!-- Specifies the title of the page, displayed in the browser tab -->
+        <link rel="stylesheet" href="Billing.css">  <!-- Linking external CSS -->
+    </head>
+    <body>
+        <!-- Sidebar Navigation (Same for All Pages) -->
+        <nav class="sidebar">
+            <!-- Title of the side bar with highlighted part "ech"-->
+            <h1 class="sidebar-title">
+                AVT<span class="highlight">ech</span>
+            </h1>
+            <ul> <!-- Unordered list of navigation links in sidebar -->
+                <!-- The link to different pages -->
+                <li><a href="HomePage.html">🎛️ Dashboard</a></li>
+                <li><a href="PatientRegister.html">📝 Patient Registration</a></li>
+                <li><a href="PatientAdmission.html">🏥 Patient Admission</a></li>
+                <li><a href="ScheduleAppointment.html">📅 Schedule Appointment</a></li>
+                <li><a href="Billing.html">💲 Insurance Form/Claims</a></li>
+                <li><a href="MedicalReport.html">📂 Medical Report</a></li>
+            </ul>
+            <!-- Log out button -->
+            <button id="logoutBtn">🚪 Logout</button>
+        </nav>
+
+        <!-- Main content section in the page -->
+        <main class="main-content">
+            <h1>💲 Insurance Form/Claims </h1>
+            <div>
+                <!-- Header of the page -->
+                <h2>File Insurance Overview </h2>
+            </div>
+            
+            <!-- Card to display total number of claims -->
+            <div class="cards">
+                <div class="card">
+                    <h4>TOTAL CLAIMS</h4>
+                    <p id="claimCounts">0</p>
+                </div>
+            </div>
+            
+            <!-- Header showing below content is claims data -->
+            <div class="item">
+                <h3>Claims</h3>
+            </div>
+            <!-- Search bar and Add claim button are grouped together -->    
+            <div class="barNbutton"> 
+                <!-- Allow searching and add claim using search bar and add button -->                   
+                <input type="text" placeholder="Search claims based on policy number or patient name" class="search-bar">
+                <button class="btn addclaims" onclick="openModal()">+ Add Claim</button> <!-- Button to open the add claim modal -->
+            </div>
+            
+            <!-- Table displays information and data -->
+            <table>
+                <thead>
+                    <tr>
+                        <!-- Table header -->
+                        <th>Policy No</th>
+                        <th>Patient Name & ID</th>
+                        <th style="width: 10%;">NRIC/Passport </th>
+                        <th>Gender</th>
+                        <th>Contact Number</th>
+                        <th>Admission Date</th>
+                        <th>Name of Physician</th>
+                        <th>Name of Hospital</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table body will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </main>
+
+        <!-- Popup modal for adding new claim -->
+        <div id="addClaimModal" class="modal">
+            <div class="popup-add"> 
+                <h3>Hospitalisation Claim Form</h3> <!-- Title of the modal -->
+                <p class="notice">*Please submit the duly completed Claim Form with the documents required to expedite claim processing.*</p> <!-- Notice -->
+                <form id='claimForm' onSubmit="return formValidation();"> <!-- Calls the JavaScript function for form validation before submission -->
+                    <div class="inputPolicy"> <!-- Policy Section -->
+                        <label for="policyNo">Policy No<span class="required">*</span></label> <!-- Label for the input field -->
+                        <input type="text" id="policyNo" name="policyNo" readonly> <!-- Automatically generated policy number -->
+                    </div>
+                        
+                    <!-- Patient Information Section -->
+                    <div class="section-title">
+                        <!-- Header of the section-->
+                        <h4>Patient Information</h4>
+                    </div>
+                    
+                    <!-- Input fields -->
+                    <div class="input-container">
+                        <!-- Inputs that are at left side of the modal -->
+                        <div class="input-left">
+                            <!-- Container groups the label and input together -->
+                            <div class="input">
+                                <label for="patientSelect">Name of Patient <span class="required">*</span></label> <!-- Span has a asterisk to show user the input field is required -->
+                                <select id="patientSelect" name="patientSelect" required></select> <!-- Dropdown for selecting patient name -->
+                            </div>
+                        
+                            <!-- Get patient email address -->
+                            <div class="input">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="example@gmail.com"> <!-- Placeholder hints user what kind of input is expected -->
+                            </div>
+
+                            <!-- Get patient gender -->
+                            <div class="gender-option">
+                                <label for="gender">Gender <span class="required">*</span></label>
+                                <!-- Container groups the labels and radio inputs together -->
+                                <div class="radio-buttons">
+                                    <label for="male">
+                                        <input type="radio" value="Male" name="gender" id="male" required><span>Male</span>
+                                    </label>
+                                    <!-- 'for' attribute for each label links to the id-->
+                                    <label for="female">
+                                        <input type="radio" value="Female" name="gender" id="female" required><span>Female</span> <!-- span function labels the radio button -->
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Inputs that are at right side of the modal -->
+                        <div class="input-right">
+                            <div class="input">
+                                <!-- Get patient national id / passport -->
+                                <label for="identification">NRIC/Passport <span class="required">*</span></label>
+                                <input type="text" id="identification" name="identification" required placeholder="Enter nric/ passport id ">
+                            </div>
+                        
+                            <!-- Get patient date of birth -->
+                            <div class="input">
+                                <label for="dob">Date of Birth <span class="required">*</span></label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                        
+                            <div class="input">
+                                <!-- Get patient contact number -->
+                                <label for="contactNo">Contact Number <span class="required">*</span></label>
+                                <input type="text" id="contactNo" name="contactNo" required placeholder="Enter contact number (Digits only)" maxlength="11" pattern="\d{10,11}">
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <!-- Hospitalisation Information Section -->
+                    <div class="section-title">
+                        <!-- Header of the section -->
+                        <h4>Hospitalisation Information</h4>
+                    </div>
+                        
+                    <div class="input-container">
+                        <div class="input-left">
+                            <div class="input">
+                                <!-- Get patient's admission date -->
+                                <label for="admissionDate">Admission Date <span class="required">*</span></label>
+                                <input type="date" id="admissionDate" name="admissionDate" required>
+                            </div>
+                        </div>
+
+                        <div class="input-right">
+                            <div class="input">
+                                <!-- Get patient's discharge date -->
+                                <label for="dischargeDate">Discharge Date <span class="required">*</span></label>
+                                <input type="date" id="dischargeDate" name="dischargeDate" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Get additional information about why patient is hospitalized -->
+                    <div class="input">
+                        <label for="info1">Is the hospitalisation related to an accident?  <span class="required">*</span></label>
+                        <label for="info2">If yes, please provide details of accident.  <span class="required">*</span></label>
+                        <label for="info3">If no, please indicate the symptoms of the patient complained when he/she first saw you  <span class="required">*</span></label>
+                        <textarea id="info1, info2, info3" rows="5" required placeholder="Please provide the answer here"></textarea> <!-- The textarea is 5 lines tall -->
+                    </div>
+
+                    <div class="input">
+                        <!-- Get user input on amount of claim -->
+                        <label for="info4">Total claimed amount (RM)</label>
+                        <textarea id="info4" rows="3" required placeholder="Please enter the claimed amount"></textarea> <!-- The textarea is 3 lines tall -->
+                    </div>
+
+                    <!-- Group inputs in a container -->
+                    <div class="input-container">
+                        <!-- Group input that put on left side of the modal -->
+                        <div class="input-left">
+                            <div class="input">
+                                <!-- Get physician's name -->
+                                <label for="nameOfPhysician">Name of Physician <span class="required">*</span></label>
+                                <input type="text" id="nameOfPhysician" name="nameOfPhysician" required placeholder="Enter physician's name (letters only)">
+                            </div>
+                        </div>
+
+                        <!-- Group input that put on right side of the modal -->
+                        <div class="input-right">
+                            <div class="input">
+                                <!-- Get user input on hospital name -->
+                                <label for="nameOfHospital">Name of Hospital<span class="required">*</span></label>
+                                <input type="text" id="nameOfHospital" name="nameOfHospital" required placeholder="Enter hospital's name (letters only)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notices reminding the user to review and confirm information before submission -->
+                    <p class="notice">*Be aware that some of the information is not editable after submission*</p>
+                    <p class="notice">*Please ensure all the information above is accurate before submitting this form*</p>
+
+                    <!-- The button are grouped together -->
+                    <div class="button">
+                        <button type="submit">Submit</button> <!-- The submit button in the modal -->
+                        <button type="button" class="close-btn" onclick="closeModal()">X</button> <!-- Close button in the modal -->
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="Billing.js"></script> <!-- HTML is linked to external JavaScript file -->
+    </body>
+</html>
