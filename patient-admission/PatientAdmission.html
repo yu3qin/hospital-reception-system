@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Reception System</title>
+    <link rel="stylesheet" href="PatientAdmission.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <h1 class="sidebar-title">AVT<span class="highlight">ech</span></h1>
+        <ul>
+            <li><a href="HomePage.html">🎛️ Dashboard</a></li>
+            <li><a href="PatientRegister.html">📝 Patient Registration</a></li>
+            <li><a href="PatientAdmission.html" class="active">🏥 Patient Admission</a></li>
+            <li><a href="ScheduleAppointment.html">📅 Schedule Appointment</a></li>
+            <li><a href="Billing.html">💲 Insurance Form/Claims</a></li>
+            <li><a href="MedicalReport.html">📂 Medical Report</a></li>
+        </ul>
+        <button id="logoutBtn">🚪 Logout</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>🏥 Patient Admission </h1>
+        <h2>Patient Admission Records 📋</h2>
+
+        <!-- Patient Admission Table -->
+        <table id="admissionTable">
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Patient Name & ID</th>
+                    <th>Admission Date</th>
+                    <th>Doctor's Name</th>
+                    <th>Admission Type</th>
+                    <th>Room Type</th>
+                    <th>Room Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Records will be dynamically inserted here -->
+            </tbody>
+        </table>
+
+        <h2>Schedule Hospital Admission 🏥</h2>
+        <p>Register a patient for hospital admission by filling out the form below.</p>
+
+        <!-- Hospital Admission Form -->
+        <form id="admissionForm" class="admission-form">
+            <label for="patientSelect">Select Patient:</label>
+            <select id="patientSelect" required>
+                <option value="">-- Choose a Patient --</option>
+                <!-- Patient options will be loaded dynamically -->
+            </select>
+
+            <label for="admissionDate">Admission Date:</label>
+            <input type="date" id="admissionDate" required>
+
+            <label for="doctorName">Doctor's Name:</label>
+            <input type="text" id="doctorName" required>
+
+            <label for="admissionType">Admission Type:</label>
+            <select id="admissionType" required>
+                <option value="Outpatient">Outpatient</option>
+                <option value="Inpatient">Inpatient</option>
+            </select>
+
+            <div id="roomSection">
+                <label for="roomType">Room Type:</label>
+                <select id="roomType">
+                    <option value="">-- Select Room Type --</option>
+                    <option value="ICU">ICU</option>
+                    <option value="General">General</option>
+                    <option value="VIP">VIP</option>
+                </select>
+
+                <label for="roomNumber">Room Number:</label>
+                <select id="roomNumber">
+                    <option value="">-- Choose a Room --</option>
+                </select>
+            </div>
+
+            <button type="submit">Schedule Admission</button>
+        </form>
+
+        <script src="PatientAdmission.js"></script>
+
+    </div>
+
+</body>
+</html>
